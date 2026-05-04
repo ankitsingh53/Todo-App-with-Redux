@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addTask } from "./Store";
+import { addTask, fetchTask } from "./Store";
 import { deleteTask } from "./Store";
 
 function Todo() {
@@ -20,6 +20,9 @@ function Todo() {
     return dispatch(deleteTask(id))
   }
 
+  const handleFetchTasks = ()=>{
+    dispatch(fetchTask())
+  }
 
   return (
     <>
@@ -35,6 +38,9 @@ function Todo() {
           <button type="submit">ADD TASK</button>
         </form>
         <div>
+
+          <button onClick={handleFetchTasks}>Fetch Task</button>
+
           <ul>
             {tasks.map((item, index) => {
               return (
